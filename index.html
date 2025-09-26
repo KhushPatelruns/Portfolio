@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Khush | Robotics Portfolio</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div class="loader"><div class="typed-text"></div></div>
+
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <span id="typed-logo"></span><span class="blink">_</span>
+      </div>
+      <div class="menu-toggle" id="menuToggle">☰</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="resume.html" target="_blank">Resume</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><button id="darkToggle">🌗</button></li>
+      </ul>
+    </nav>
+
+    <div class="hero">
+      <h1>
+        <svg viewBox="0 0 24 24" class="robot-icon">
+          <path d="M12 2a2 2 0 0 1 2 2v2h-4V4a2 2 0 0 1 2-2zm-6 6h12v2H6V8zm0 4h12v2H6v-2zm0 4h12v2H6v-2z"/>
+        </svg>
+        Khush Patel
+      </h1>
+      <p>Mechanical Engineering | Robotics | Energy</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="content-wrapper">
+      <section id="welcome">
+        <h2>Welcome</h2>
+        <div class="about-wrapper">
+          <div class="about-text">
+            <p>I am Khush, a Mechanical Engineering undergraduate student at Johns Hopkins University. My focus is on understanding robotic dynamics, simulation, and optimization. Additionally, I share a passion in the renewable sector, where I am the mechanical lead for a wind harvester start-up company.  </p>
+          </div>
+          <div class="about-image">
+            <img src="assets/images/profile.jpeg" alt="Khush Patel" />
+          </div>
+        </div>
+      </section>
+
+      <section id="skills">
+        <h2>Skills</h2>
+        <div class="skill">
+          <label>Python</label>
+          <div class="bar"><div class="fill" data-width="50%"></div></div>
+        </div>
+        <div class="skill">
+          <label>Ansys FEA (Fluent)</label>
+          <div class="bar"><div class="fill" data-width="40%"></div></div>
+        </div>
+        <div class="skill">
+          <label>Arduino</label>
+          <div class="bar"><div class="fill" data-width="75%"></div></div>
+        </div>
+         <div class="skill">
+          <label>Matlab</label>
+          <div class="bar"><div class="fill" data-width="40%"></div></div>
+        </div>
+        <div class="skill">
+          <label>SolidWorks</label>
+          <div class="bar"><div class="fill" data-width="80%"></div></div>
+        </div>
+      </section>
+
+      <section id="contact">
+  <h2>Feel Free to Contact Me!</h2>
+  <form 
+    class="terminal-form" 
+    action="https://formspree.io/f/mdkwkbpd" 
+    method="POST"
+  >
+    <label>Name:</label>
+    <input type="text" name="name" placeholder="> Enter your name" required />
+
+    <label>Email:</label>
+    <input type="email" name="email" placeholder="> Enter your email" required />
+
+    <label>Message:</label>
+    <textarea name="message" placeholder="> Type your message here..." required></textarea>
+
+    <button type="submit">Send</button>
+  </form>
+</section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Khush Patel</p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
