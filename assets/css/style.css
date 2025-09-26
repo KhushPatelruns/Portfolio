@@ -7,7 +7,6 @@ body {
   overflow-x: hidden;
 }
 /* === Welcome Frame === */
-/* === Welcome Frame === */
 .welcome {
   text-align: center;
   padding: 2rem;
@@ -369,9 +368,8 @@ section:hover {
   font-size: 1.5rem;
   color: #00ffcc;
   text-decoration: none;
-  padding: 0.5rem;
+  padding: 0.4rem;
   border: 1px solid #00ffcc;
-  border-radius: 4px;
   transition: background 0.3s ease;
 }
 .back-arrow:hover {
@@ -502,5 +500,6 @@ footer {
   border-radius: 10px;
   box-shadow: 0 0 20px #00ffcc55;
 }
+
 
 
