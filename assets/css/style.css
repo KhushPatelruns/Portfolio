@@ -445,26 +445,40 @@ footer {
   border-top: 1px solid #333;
   margin-top: 4rem;
 }
-.pdf-wrapper {
+/* === Resume Section (Image Preview + Download Button) === */
+.resume-wrapper {
   position: relative;
   width: 100%;
-  padding-bottom: 140%; /* Adjust ratio to roughly match PDF page height */
-  height: 0;
-  overflow: hidden;
+  max-width: 900px;   /* keeps it neat on desktops */
+  margin: 0 auto;
+  text-align: center;
 }
 
-.pdf-wrapper iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
+.resume-wrapper img {
   width: 100%;
-  height: 100%;
-  border: none;
+  height: auto;
+  border-radius: 10px;
   box-shadow: 0 0 20px #00ffcc55;
+  display: block;
+  margin-bottom: 1rem;
 }
-@media (max-width: 480px) {
-  .pdf-wrapper {
-    padding-bottom: 180%; /* taller for very narrow phones */
-  }
+
+.resume-wrapper .download-btn {
+  display: inline-block;
+  background: #00ffcc;
+  color: #0f1115;
+  padding: 0.6rem 1rem;
+  font-weight: bold;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 0 10px #00ffcc55;
 }
+
+.resume-wrapper .download-btn:hover {
+  background: #0077ff;
+  color: #fff;
+  transform: scale(1.05);
+}
+
 
