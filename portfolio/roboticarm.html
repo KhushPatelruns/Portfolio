@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Robotic Arm Project | Khush</title>
+  <link rel="stylesheet" href="../../assets/css/style.css" />
+  <style>
+    .back-arrow {
+      font-size: 1.5rem;
+      color: #00ffcc;
+      text-decoration: none;
+      padding: 0.5rem;
+      border: 1px solid #00ffcc;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+    .back-arrow:hover {
+      background: #00ffcc;
+      color: #0a0a0a;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+ <nav class="navbar">
+      <div class="logo">
+        <span id="typed-logo"></span><span class="blink">_</span>
+      </div>
+      <div class="menu-toggle">
+        <a href="/projects.html" class="back-arrow">←</a>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><button id="darkToggle">🌗</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Robotic Arm Project</h1>
+    <p>Precision Control | Real-Time Control | Simulation</p>
+  </section>
+
+  <!-- Main Content -->
+  <main class="content-wrapper"> 
+  <!-- Demo Video -->
+    <section class="demo-video">
+      <h2>Project Demo</h2>
+      <div class="video-wrapper">
+<video autoplay muted controls poster="/projects/robotic-arm/arm1.jpeg">
+  <source src="/projects/robotic-arm/robotarm.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+      </div>
+      <p class="caption">
+        Watch the robotic arm execute precision movements and calculate real-time inverse kinematics. Simulated in Webots and mirrored on physical hardware.
+      </p>
+    </section>
+    <!-- Overview -->
+    <section>
+      <h2>Overview</h2>
+      <p>
+        This project showcases a 4-DOF robotic arm I designed on SolidWorks from scratch and 3D printed for precision control and real-time simulation. Built using Arduino and simulated in Webots, it demonstrates inverse kinematics, servo coordination, and modular design principles (DFM). I used FEA static simulations on SolidWorks to amended the gripper design for less defformation under load.
+      </p>
+    </section>
+    <!-- Technical Highlights -->
+    <section>
+      <h2>Technical Highlights</h2>
+      <ul>
+        <li>Inverse kinematics solver for smooth joint articulation</li>
+        <li>Real-time sensor integration via serial communication</li>
+        <li>FEA static simulations to amend design</li>
+        <li>Webots simulation synced with physical hardware</li>
+        <li>DFM optimized linkages</li>
+      </ul>
+    </section>
+
+      
+
+    <!-- Exploded View -->
+   <section class="demo-video">
+      <h2>Exploded View</h2>
+      <div class="video-wrapper">
+        <video controls poster="/projects/robotic-arm/explodedarmthumbnail.jpeg">
+          <source src="/projects/robotic-arm/explodedvidrobotarm.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <p class="caption">
+        Visual breakdown of the arm’s mechanical components and servo placements. Designed for easy assembly, maintenance, and part replacement.
+      </p>
+    </section>
+    <!-- FEA Optimization -->
+<section class="fea-optimization">
+  <h2>FEA Optimization</h2>
+  <div class="image-wrapper">
+    <img src="/projects/robotic-arm/fea_comparison.jpeg" alt="FEA comparison before and after gripper redesign" />
+  </div>
+  <p class="caption">Comparative FEA results showing reduced stress and displacement after redesigning the gripper for a 100g tip load.</p>
+  <!-- Rest of your text -->
+      <p>
+        <strong>Adaptive Redesign of Gripper Assembly for Precision Load Handling</strong><br><br>
+        To optimize performance under a 100g tip load, I conducted a comparative FEA study on the gripper assembly. The original design showed stress concentrations up to 14.22 MPa and tip displacements of 0.209 mm. Through iterative structural refinements—targeting geometry, material distribution, and load paths—I reduced stress to 13.20 MPa and displacement to just 0.100 mm.
+        <br><br>
+        This redesign not only improved mechanical resilience but also enhanced positional accuracy, critical for precision robotics. The results validate a more efficient, load-tolerant gripper architecture, demonstrating my ability to merge simulation insights with real-world constraints.
+      </p>
+    </section>
+
+ 
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Khush Patel</p>
+  </footer>
+
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>

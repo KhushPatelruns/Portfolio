@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects | Khush</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .project-card {
+      background: #121417;
+      border: 1px solid #00ffcc55;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #00ffcc22;
+      padding: 1rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .project-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 25px #00ffccaa, 0 0 10px #00ffcc55 inset;
+    }
+    .project-card img {
+      width: 100%;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      box-shadow: 0 0 10px #00ffcc33;
+    }
+    .project-card h3 {
+      color: #00ffcc;
+      margin-bottom: 0.5rem;
+    }
+    .project-card p {
+      color: #ccc;
+      font-size: 0.95rem;
+    }
+    .back-arrow {
+      font-size: 1.5rem;
+      color: #00ffcc;
+      text-decoration: none;
+      padding: 0.5rem;
+      border: 1px solid #00ffcc;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+    .back-arrow:hover {
+      background: #00ffcc;
+      color: #0a0a0a;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <span id="typed-logo"></span><span class="blink">_</span>
+      </div>
+      <div class="menu-toggle">
+        <a href="index.html" class="back-arrow">←</a>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><button id="darkToggle">🌗</button></li>
+      </ul>
+    </nav>
+
+    <div class="hero">
+      <h1>
+        <svg viewBox="0 0 24 24" class="robot-icon">
+          <path d="M12 2a2 2 0 0 1 2 2v2h-4V4a2 2 0 0 1 2-2zm-6 6h12v2H6V8zm0 4h12v2H6v-2zm0 4h12v2H6v-2z"/>
+        </svg>
+        Projects
+      </h1>
+      <p>Mechanical Engineering | Robotics | Energy</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="content-wrapper">
+      <section>
+        <h2>Featured Projects</h2>
+        <div class="project-grid">
+         <a href="roboticarm.html" class="project-card" style="text-decoration: none; display: block;">
+  <img src="projects/robotic-arm/arm.jpeg" alt="Robotic Arm Project" />
+  <h3>Robotic Arm Project</h3>
+  <p>I fully designed and programmed a 4DOF robotic arm using Arduino and inverse kinematics. Integrated real-time feedback for precision control.</p>
+</a>
+
+
+          <!-- Add more project cards as needed -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Khush Patel</p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
