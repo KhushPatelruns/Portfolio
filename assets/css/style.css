@@ -243,17 +243,24 @@ section:hover {
 .about-text {
   flex: 1 1 300px;
 }
+.about-image {
+  flex: 1 1 100%;
+  display: flex;
+  justify-content: center;  /* center horizontally */
+}
+
 .about-image img {
-  width: 200px;
+  width: clamp(150px, 40vw, 400px); 
+  /* min 150px on tiny phones,
+     ~40% of viewport width normally,
+     max 400px on large monitors */
+  height: auto; /* keep aspect ratio */
   border-radius: 10px;
   box-shadow: 0 0 10px #09ffd255;
+  display: block;
 }
-@media (max-width: 768px) {
-  .welcome img {
-    display: block;
-    margin: 2rem;
-  }
-}
+
+
 /* === Fixed Width Container for Main Sections === */
 .content-wrapper {
   max-width: 1000px;
@@ -438,49 +445,3 @@ footer {
   border-top: 1px solid #333;
   margin-top: 4rem;
 }
-/* === Mobile (iPhones and very small devices) === */
-@media (max-width: 480px) {
-  .hero h1 {
-    font-size: 1.5rem; /* shrink headline */
-    flex-direction: column; /* stack icon + text */
-    gap: 5px;
-  }
-  .hero p {
-    font-size: 0.9rem;
-  }
-
-  .about-wrapper {
-    flex-direction: column; /* stack text over image */
-    text-align: center;
-  }
-  .about-image img {
-    width: 150px; /* shrink profile image */
-    margin: 0 auto;
-  }
-
-  .skill label {
-    font-size: 0.9rem;
-  }
-  .bar {
-    max-width: 100%; /* bars span full width */
-    height: 16px;
-  }
-
-  .terminal-form {
-    width: 100%;
-    padding: 0 10px;
-  }
-  .terminal-form input,
-  .terminal-form textarea {
-    font-size: 0.9rem;
-  }
-  .terminal-form button {
-    font-size: 0.9rem;
-    padding: 0.6rem;
-  }
-
-  footer {
-    font-size: 0.8rem;
-  }
-}
-
