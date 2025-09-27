@@ -7,6 +7,7 @@ body {
   overflow-x: hidden;
 }
 /* === Welcome Frame === */
+/* === Welcome Frame === */
 .welcome {
   text-align: center;
   padding: 2rem;
@@ -364,18 +365,81 @@ section:hover {
   color: #fff;
   transform: scale(1.05);
 }
-.back-arrow {
+/* keep the glowy container (menu-toggle) — make sure this is the one providing the box */
+.menu-toggle {
   font-size: 1.5rem;
   color: #00ffcc;
+  cursor: pointer;
+
+  border: 2px solid rgba(0,255,204,0.95); /* outer glowy box */
+  padding: 0.35rem;                       /* small padding so anchor fits inside */
+  border-radius: 8px;
+  background: transparent;
+  box-shadow: 0 0 12px rgba(0,255,204,0.28), 0 0 26px rgba(0,255,204,0.12) inset;
+  transition: transform 0.18s ease, box-shadow 0.25s ease, background 0.18s ease, color 0.18s ease;
+  display: none; /* controlled by your media queries below */
+  position: relative;
+  z-index: 1200; /* make sure it sits above the dropdown */
+}
+
+/* remove inner border/padding and let the anchor simply be the icon inside */
+.menu-toggle > .back-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  margin: 0;
+  border: none;             /* <- important: remove the duplicate border */
+  background: transparent;
+  color: inherit;
   text-decoration: none;
-  padding: 0.4rem;
-  border: 1px solid #00ffcc;
-  transition: background 0.3s ease;
+  border-radius: 6px;
+  line-height: 1;
 }
-.back-arrow:hover {
-  background: #00ffcc;
+
+/* container hover (subtle) */
+.menu-toggle:hover,
+.menu-toggle:focus {
+  transform: scale(1.06);
+  box-shadow: 0 0 18px rgba(0,255,204,0.6), 0 0 30px rgba(0,255,204,0.18) inset;
+  /* keep background subtle so inner anchor hover remains the "fill" effect */
+  background: rgba(0,255,204,0.04);
+}
+
+/* inner anchor hover still gives the fill-in effect */
+.menu-toggle > .back-arrow:hover {
+  background: rgba(0,255,204,0.95);
   color: #0a0a0a;
+  box-shadow: 0 0 14px rgba(0,255,204,0.35), inset 0 0 6px rgba(0,255,204,0.08);
 }
+
+/* mobile visibility + spacing tweaks (replace your existing .menu-toggle inside media query) */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: inline-flex;   /* show the back button/hamburger on small screens */
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 8px;            /* nudge dropdown slightly left so it doesn't butt up exactly at edge */
+    width: 200px;
+    padding: 1rem;
+    box-shadow: 0 0 10px #00ffcc55;
+    border-left: 2px solid #00ffcc;
+    z-index: 1100;         /* below the menu-toggle so button stays tappable */
+  }
+
+  .nav-links.active { display: flex; }
+}
+
 .about-text p {
   font-size: clamp(1rem, 2vw + 0.5rem, 1.8rem);
   line-height: 1.6;
