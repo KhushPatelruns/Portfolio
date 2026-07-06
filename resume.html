@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume | Khush Patel</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .resume-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 9rem 2.5rem 6rem;
+      position: relative;
+      z-index: 1;
+    }
+    .resume-header {
+      margin-bottom: 3rem;
+    }
+    .resume-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    .resume-preview {
+      width: 100%;
+      background: var(--navy-light);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .resume-preview::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--cyan));
+    }
+    .resume-preview img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 14px;
+    }
+    .resume-preview a {
+      display: block;
+      cursor: pointer;
+    }
+    @media (max-width: 700px) {
+      .resume-wrapper { padding: 8rem 1.25rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-logo">KP <span>/ engineer</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#internships">Internships</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="resume.html" class="nav-resume-btn active">Resume</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html#about" onclick="closeMobileNav()">About</a>
+    <a href="index.html#internships" onclick="closeMobileNav()">Internships</a>
+    <a href="index.html#projects" onclick="closeMobileNav()">Projects</a>
+    <a href="index.html#contact" onclick="closeMobileNav()">Contact</a>
+  </div>
+
+  <div class="resume-wrapper">
+    <div class="resume-header reveal">
+      <p class="section-eyebrow">Credentials</p>
+      <h1 class="section-title">Resume</h1>
+      <div class="section-rule"></div>
+      <p class="section-subtitle">Mechanical Engineering · Johns Hopkins University · Robotics &amp; Energy</p>
+      <div class="resume-actions">
+        <a href="assets/docs/resume.pdf" download class="btn-primary">Download PDF ↓</a>
+        <a href="assets/docs/resume.pdf" target="_blank" class="btn-outline">Open Full Screen ↗</a>
+      </div>
+    </div>
+
+    <div class="resume-preview reveal">
+      <a href="assets/docs/resume.pdf" target="_blank" title="Click to open PDF">
+        <img src="assets/images/resume.jpeg" alt="Khush Patel Resume" />
+      </a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-left">© 2026 <span>Khush Patel</span></div>
+    <div class="footer-right">
+      <a href="index.html">Home</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
