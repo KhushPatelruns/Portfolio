@@ -152,27 +152,51 @@ skillCards.forEach(card => {
   scObserver.observe(card);
 });
 
-// ---- Contact form (mock submit) ----
-const contactForm   = document.getElementById('contactForm');
-const formSuccess   = document.getElementById('formSuccess');
+// ---- Contact form with Formspree ----
+const contactForm = document.getElementById('contactForm');
+const formSuccess = document.getElementById('formSuccess');
 
 if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
+  contactForm.addEventListener('submit', async function(e) {
     e.preventDefault();
+    
     const btn = contactForm.querySelector('.form-submit');
-    btn.textContent = 'Sending…';
+    const originalText = btn.textContent;
+    btn.textContent = 'Sending...';
     btn.disabled = true;
-
-    // Simulate send
-    setTimeout(() => {
-      contactForm.reset();
-      btn.textContent = 'Send Message →';
-      btn.disabled = false;
-      if (formSuccess) {
-        formSuccess.style.display = 'block';
-        setTimeout(() => { formSuccess.style.display = 'none'; }, 5000);
+    
+    const formData = new FormData(contactForm);
+    
+    try {
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        contactForm.reset();
+        btn.textContent = originalText;
+        btn.disabled = false;
+        
+        if (formSuccess) {
+          formSuccess.style.display = 'block';
+          setTimeout(() => {
+            formSuccess.style.display = 'none';
+          }, 5000);
+        }
+      } else {
+        btn.textContent = originalText;
+        btn.disabled = false;
+        alert('Something went wrong. Please try again or email me directly.');
       }
-    }, 1200);
+    } catch (error) {
+      btn.textContent = originalText;
+      btn.disabled = false;
+      alert('Something went wrong. Please try again or email me directly.');
+    }
   });
 }
 
