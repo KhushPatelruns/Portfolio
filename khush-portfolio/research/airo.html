@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>AIRO Lab Research | Khush Patel</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    /* ── PAGE-LOCAL STYLES ── */
+    .research-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .research-meta-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--accent-pale);
+      border: 1px solid var(--border-mid);
+      border-radius: 50px;
+      padding: 0.35rem 0.9rem;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+    .section-callout {
+      background: var(--accent-pale);
+      border: 1.5px solid var(--border-mid);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 1.1rem 1.4rem;
+      margin-bottom: 1.75rem;
+      max-width: 760px;
+    }
+    .section-callout p { margin-bottom: 0 !important; color: var(--navy) !important; font-size: 0.94rem !important; }
+    .page-divider { width:100%; height:1px; background:var(--border); margin: 3rem 0 2.5rem; }
+    /* Why This Matters grid layout */
+    .why-matters-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+      margin-bottom: 1.5rem;
+    }
+    .why-matters-content {
+      display: flex;
+      flex-direction: column;
+    }
+    .why-matters-img-wrap {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1.5px solid var(--border);
+      box-shadow: var(--shadow-md);
+    }
+    .why-matters-img-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+    /* Phase cards */
+    .phase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .phase-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.3rem;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+      position: relative;
+    }
+    .phase-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); border-color: var(--accent-light); }
+    .phase-num {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+    .phase-title {
+      font-family: var(--display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.4rem;
+    }
+    .phase-desc { font-size: 0.84rem; color: var(--text-muted); line-height: 1.65; }
+    /* Math blocks */
+    .eq-block {
+      background: var(--bg-alt);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.5rem;
+      margin: 1.2rem 0 1.5rem;
+      max-width: 620px;
+      font-family: var(--mono);
+      font-size: 0.88rem;
+      color: var(--navy);
+      line-height: 2;
+    }
+    .eq-block .eq-label {
+      font-size: 0.63rem;
+      color: var(--accent);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+    .eq-block .eq-line { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
+    .eq-frac { display:inline-flex; flex-direction:column; align-items:center; vertical-align:middle; margin:0 0.1rem; line-height:1.3; }
+    .eq-frac .eq-num { border-bottom: 1.5px solid var(--navy); padding-bottom:1px; font-size:0.82rem; }
+    .eq-frac .eq-den { font-size:0.82rem; padding-top:1px; }
+    .eq-result { font-weight:700; color:var(--accent); }
+    .eq-var { font-style: italic; }
+    /* Data stat grid */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .stat-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      box-shadow: var(--shadow-sm);
+      text-align: center;
+    }
+    .stat-num {
+      font-family: var(--mono);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .stat-label { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+    /* CFD pipeline flow */
+    .pipeline-flow {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex-wrap: wrap;
+      margin: 1.5rem 0 2rem;
+    }
+    .pipeline-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+      background: var(--bg-card);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.8rem 1rem;
+      min-width: 110px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+    .pipeline-step .ps-label {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      color: var(--navy);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .pipeline-step .ps-sub { font-size: 0.72rem; color: var(--text-muted); }
+    .pipeline-arrow {
+      font-size: 1.1rem;
+      color: var(--accent);
+      padding: 0 0.3rem;
+      font-family: var(--mono);
+    }
+    /* POD insight box */
+    .insight-box {
+      background: var(--navy);
+      border-radius: var(--radius-lg);
+      padding: 2rem 2.2rem;
+      margin: 2rem 0;
+      max-width: 760px;
+    }
+    .insight-box h3 {
+      font-family: var(--display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: #60A5FA;
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.01em;
+    }
+    .insight-box p {
+      color: rgba(255,255,255,0.72) !important;
+      font-size: 0.91rem !important;
+      line-height: 1.8 !important;
+      max-width: none !important;
+      margin-bottom: 0.75rem !important;
+    }
+    .insight-box p:last-child { margin-bottom: 0 !important; }
+    .insight-box strong { color: #93C5FD !important; }
+    /* Future work list */
+    .future-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin: 1.25rem 0 2rem;
+      max-width: 720px;
+    }
+    .future-item {
+      display: flex;
+      align-items: flex-start;
+      background: var(--bg-card);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.9rem 1rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      box-shadow: var(--shadow-sm);
+    }
+    /* Takeaway */
+    .takeaway-box {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--navy-mid) 100%);
+      border-radius: var(--radius-lg);
+      padding: 2rem 2.2rem;
+      margin-top: 3rem;
+      max-width: 760px;
+    }
+    .takeaway-box h3 { font-family:var(--display); font-size:1.05rem; font-weight:700; color:#fff; margin-bottom:0.75rem; }
+    .takeaway-box ul { list-style:none !important; margin:0 !important; }
+    .takeaway-box ul li {
+      padding-left: 1.4rem !important;
+      color: rgba(255,255,255,0.85) !important;
+      font-size: 0.91rem !important;
+      line-height: 1.75 !important;
+      margin-bottom: 0.5rem !important;
+    }
+    .takeaway-box ul li::before { color: #93C5FD !important; }
+    @media (max-width: 650px) {
+      .phase-grid { grid-template-columns: 1fr; }
+      .pipeline-flow { gap: 0.4rem; }
+      .pipeline-arrow { display: none; }
+      .pipeline-step { min-width: 80px; padding: 0.65rem 0.7rem; }
+      .future-grid { grid-template-columns: 1fr; }
+      .insight-box, .takeaway-box { padding: 1.4rem 1.2rem; }
+      .why-matters-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <nav class="navbar" id="navbar">
+    <a href="../index.html" class="nav-logo">KP <span>/ engineer</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#internships">Internships</a></li>
+      <li><a href="../index.html#research">Research</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+      <li><a href="../resume.html" class="nav-resume-btn">Resume</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="../index.html#about" onclick="closeMobileNav()">About</a>
+    <a href="../index.html#internships" onclick="closeMobileNav()">Internships</a>
+    <a href="../index.html#research" onclick="closeMobileNav()">Research</a>
+    <a href="../index.html#projects" onclick="closeMobileNav()">Projects</a>
+    <a href="../index.html#contact" onclick="closeMobileNav()">Contact</a>
+    <a href="../resume.html">Resume</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <a href="../index.html#research" class="page-back">Back to Research</a>
+    <p class="section-eyebrow">Undergraduate Research / Ongoing / Johns Hopkins University</p>
+    <h1 class="page-title">Ship Wake CFD &amp;<br>Dimensionality Reduction</h1>
+    <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:1.25rem;">
+      <span class="research-lab-badge" style="font-size:0.78rem;padding:0.4rem 1rem;">AIRO Lab / LCSR / JHU</span>
+      <span style="font-family:var(--display);font-size:0.95rem;color:var(--text-muted);font-weight:500;">Prof. Joseph Moore / Dept. of Mechanical Engineering</span>
+    </div>
+    <div class="research-meta-row">
+      <span class="research-meta-pill">OpenFOAM CFD</span>
+      <span class="research-meta-pill">POD / ROM</span>
+      <span class="research-meta-pill">Python</span>
+      <span class="research-meta-pill">Linear Algebra / SVD</span>
+      <span class="research-meta-pill">UAV Autonomy</span>
+      <span class="research-meta-pill">Data-Driven Fluids</span>
+    </div>
+  </div>
+
+  <div class="page-content">
+
+    <!-- ── MOTIVATION ── -->
+    <h2>Why This Matters</h2>
+    
+    <div class="why-matters-grid">
+      <div class="why-matters-content">
+        <div class="section-callout">
+          <p>
+            Landing a UAV on a moving ship deck is one of the most demanding autonomous control problems
+            in robotics. The ship's superstructure creates a turbulent wake, vortices, flow separation,
+            and highly unsteady pressure fields that directly destabilize the vehicle during final
+            approach. Controllers need accurate disturbance models to compensate, but real-world
+            ship-wake data is extraordinarily difficult and expensive to obtain.
+          </p>
+        </div>
+        <p>
+          My research has two parts: <strong>generating high-fidelity CFD simulations</strong> of ship wake flow fields, and <strong>reducing those simulations to compact, computationally efficient models</strong> that can actually be used in a real-time control system.
+        </p>
+      </div>
+      <div class="why-matters-img-wrap">
+        <img src="../assets/images/cfd_of_wake.jpg" alt="CFD simulation showing turbulent wake structures behind ship" />
+      </div>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-num">~2M</div>
+        <div class="stat-label">Mesh cells in the refined CFD domain</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">200s</div>
+        <div class="stat-label">Transient simulation duration per run</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">13</div>
+        <div class="stat-label">CPU cores used for parallelized solving</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">900×3×20⁶</div>
+        <div class="stat-label">Raw CFD output dimension, way too large for real-time use</div>
+      </div>
+    </div>
+
+    <div class="page-divider"></div>
+
+    <!-- ── CFD PIPELINE ── -->
+    <h2>CFD Simulation Pipeline</h2>
+    <p>
+      The simulation environment is built entirely in <strong>OpenFOAM</strong>, an open-source
+      finite volume solver. The ship geometry is imported as an STL surface mesh, and the
+      fluid domain is constructed and refined around it.
+    </p>
+
+    <div class="pipeline-flow">
+      <div class="pipeline-step">
+        <span class="ps-label">blockMesh</span>
+        <span class="ps-sub">Base domain</span>
+      </div>
+      <span class="pipeline-arrow">→</span>
+      <div class="pipeline-step">
+        <span class="ps-label">snappyHexMesh</span>
+        <span class="ps-sub">Local refinement</span>
+      </div>
+      <span class="pipeline-arrow">→</span>
+      <div class="pipeline-step">
+        <span class="ps-label">pimpleFoam</span>
+        <span class="ps-sub">LES transient</span>
+      </div>
+      <span class="pipeline-arrow">→</span>
+      <div class="pipeline-step">
+        <span class="ps-label">Field Export</span>
+        <span class="ps-sub">Velocity snapshots</span>
+      </div>
+      <span class="pipeline-arrow">→</span>
+      <div class="pipeline-step">
+        <span class="ps-label">POD / ROM</span>
+        <span class="ps-sub">Dimensionality reduction</span>
+      </div>
+    </div>
+
+    <div class="phase-grid">
+      <div class="phase-card">
+        <div class="phase-num">Solver</div>
+        <div class="phase-title">pimpleFoam, LES Transient</div>
+        <div class="phase-desc">Large Eddy Simulation captures the unsteady turbulent structures in the ship wake. Incompressible flow formulation appropriate for low-Mach wind speeds.</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">Mesh</div>
+        <div class="phase-title">~1.97M Cell Hex-Dominant</div>
+        <div class="phase-desc">blockMesh generates the base structured domain. snappyHexMesh refines the boundary layer near the hull and densifies the wake box where disturbance data matters most.</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">Numerics</div>
+        <div class="phase-title">PIMPLE with Adaptive Timestep</div>
+        <div class="phase-desc">Courant number kept at or below 0.5 with adaptive timesteps. 1 outer corrector, 2 pressure-velocity correctors, 1 non-orthogonal corrector. Runs parallelized over 13 cores.</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">Results</div>
+        <div class="phase-title">Vortex Shedding and Wake Turbulence</div>
+        <div class="phase-desc">Flow separates at the stern and sharp geometric ends, producing vortex structures and a highly unsteady wake region.</div>
+      </div>
+    </div>
+
+    <div class="page-divider"></div>
+
+    <!-- ── THE DIMENSIONALITY PROBLEM ── -->
+    <h2>The Problem with Raw CFD</h2>
+    <div class="insight-box">
+      <h3>Why raw CFD can't feed a real-time controller</h3>
+      <p>
+        Each simulation exports the full 3D velocity field at every timestep, roughly
+        <strong>100 timesteps × 3 velocity components × roughly 1,000,000 spatial points</strong>.
+        That's a 300-million-element dataset per run. Even storing it efficiently is non-trivial, and using it directly for control system input is completely impractical.
+      </p>
+      <p>
+        Real-time autonomous control requires disturbance models that evaluate in <strong>microseconds
+        to milliseconds</strong>, not the hours or days a full CFD solve takes. The solution is to
+        extract the essential physics from the high-dimensional data and represent it in a compact
+        form without throwing away the accuracy that makes the simulation useful.
+      </p>
+    </div>
+
+    <div class="page-divider"></div>
+
+    <!-- ── POD ── -->
+    <h2>Proper Orthogonal Decomposition (POD)</h2>
+    <p>
+      The mathematical tool I use for this dimensionality reduction is <strong>Proper Orthogonal
+      Decomposition (POD)</strong>, a data-driven technique from linear algebra that decomposes
+      the flow field into a hierarchy of orthogonal spatial modes, ranked by energy content.
+    </p>
+    <p>
+      Conceptually, POD answers the question: <em>what are the most energetically important
+      spatial structures in this flow?</em> The first few modes capture the dominant physics,
+      and the rest can often be discarded with minimal loss of fidelity.
+    </p>
+
+    <div class="eq-block">
+      <div class="eq-label">POD Decomposition</div>
+      <div class="eq-line">
+        <span class="eq-var">u</span>
+        <span>(</span><span class="eq-var">x</span><span>,</span>
+        <span class="eq-var">t</span><span>)</span>
+        <span>=</span>
+        <span class="eq-var">ū</span><span>(</span><span class="eq-var">x</span><span>)</span>
+        <span>+</span>
+        <span>Σ<sub>k</sub></span>
+        <span class="eq-var">a<sub>k</sub></span>
+        <span>(</span><span class="eq-var">t</span><span>)</span>
+        <span>·</span>
+        <span class="eq-var">φ<sub>k</sub></span>
+        <span>(</span><span class="eq-var">x</span><span>)</span>
+      </div>
+    </div>
+
+    <p style="max-width:680px;">
+      Where <em>ū(x)</em> is the mean flow field, <em>φ<sub>k</sub>(x)</em> are the spatial
+      modes (orthogonal basis functions), and <em>a<sub>k</sub>(t)</em> are the temporal
+      coefficients that describe how each mode evolves in time. The modes are computed via
+      <strong>Singular Value Decomposition (SVD)</strong> of the snapshot matrix.
+    </p>
+
+    <div class="eq-block">
+      <div class="eq-label">Snapshot Matrix SVD</div>
+      <div class="eq-line">
+        <span class="eq-var">X</span>
+        <span>=</span>
+        <span class="eq-var">U</span>
+        <span>Σ</span>
+        <span class="eq-var">V</span><sup>T</sup>
+        <span style="margin-left:0.75rem;font-size:0.78rem;color:var(--text-muted);">(columns of U = spatial modes)</span>
+      </div>
+    </div>
+
+    <p>
+      In practice, the first handful of modes typically capture <strong>&gt;95% of the total
+      flow energy</strong>, reducing the representation from millions of spatial points to
+      just a few dozen temporal coefficients, a compression ratio of several orders of magnitude.
+    </p>
+
+    <div class="phase-grid">
+      <div class="phase-card">
+        <div class="phase-num">Step 1</div>
+        <div class="phase-title">Assemble Snapshot Matrix</div>
+        <div class="phase-desc">Each CFD timestep produces a velocity field snapshot. These are stacked column-by-column into a data matrix X of dimension (spatial points) × (timesteps).</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">Step 2</div>
+        <div class="phase-title">Subtract Mean Flow</div>
+        <div class="phase-desc">The time-averaged mean flow ū(x) is removed from every snapshot. POD then operates on the fluctuating component, isolating dynamic structures.</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">Step 3</div>
+        <div class="phase-title">SVD / Eigendecomposition</div>
+        <div class="phase-desc">Python (NumPy) computes the SVD of the snapshot matrix. Singular values reveal energy content; the leading left singular vectors are the POD spatial modes.</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">Step 4</div>
+        <div class="phase-title">Truncate &amp; Project</div>
+        <div class="phase-desc">Retain only the r most energetic modes. Project the full flow field onto this reduced basis to obtain compact temporal coefficients a_k(t) for each mode.</div>
+      </div>
+    </div>
+
+    <div class="page-divider"></div>
+
+    <!-- ── VERIFICATION ── -->
+    <h2>POD Verification: Reynolds Number Scaling</h2>
+    <p>
+      A critical check on the method's physical validity: as wind speed increases, the Reynolds
+      number increases, turbulence intensifies, and the flow becomes less ordered, meaning
+      more modes should be needed to represent it accurately.
+    </p>
+    <p>
+      I verified this by running POD at multiple wind speeds and examining whether the number
+      of energetically significant modes increased with Reynolds number. The results confirmed
+      the expected behavior: higher Reynolds number flows required more modes, consistent with
+      the physical understanding that turbulent flows contain energy across a broader range
+      of spatial scales.
+    </p>
+
+
+    <div class="page-divider"></div>
+
+    <!-- ── FUTURE WORK ── -->
+    <h2>Future Work</h2>
+    <div class="future-grid">
+      <div class="future-item">
+        Checking whether temporal coefficients stay consistent across the 4.5 to 5.5 m/s range. If they do, that opens the door to interpolating between operating conditions.
+      </div>
+      <div class="future-item">
+        Literature review on adding stochastic noise into the POD framework to represent the turbulence the reduced-order model can't capture.
+      </div>
+      <div class="future-item">
+        Ship motion correction. Right now the ship is stationary in the CFD domain. Incorporating 6-DOF vessel motion would make the simulation much more realistic.
+      </div>
+      <div class="future-item">
+        Looking into Dynamic Mode Decomposition (DMD) as an alternative to POD for capturing the oscillatory structures in the wake.
+      </div>
+    </div>
+
+    <!-- ── TAKEAWAY ── -->
+    <div class="takeaway-box">
+      <h3>Research Takeaways</h3>
+      <ul>
+        <li>High-fidelity CFD and real-time control aren't mutually exclusive. ROM bridges the gap.</li>
+        <li>POD reveals the dominant physics of complex flows through linear algebra, without needing to guess upfront which structures matter</li>
+        <li>Verifying POD results against known physical scaling (Reynolds number to mode count) builds confidence that the decomposition is capturing real fluid behavior</li>
+        <li>Automated Python post-processing pipelines are essential when working with datasets of millions of spatial points across hundreds of timesteps</li>
+      </ul>
+    </div>
+
+  </div><!-- end .page-content -->
+
+  <footer>
+    <div class="footer-left">2025 <span>Khush Patel</span> / Built with precision</div>
+    <div class="footer-right">
+      <a href="../index.html">Home</a>
+      <a href="../index.html#research">Research</a>
+      <a href="../index.html#contact">Contact</a>
+    </div>
+  </footer>
+
+  <script src="../main.js"></script>
+</body>
+</html>

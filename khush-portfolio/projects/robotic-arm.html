@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>4-DOF Robotic Arm | Khush Patel</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .fea-section-divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      margin: 3.5rem 0 3rem;
+    }
+    .fea-intro {
+      background: var(--accent-pale);
+      border: 1.5px solid var(--border-mid);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+      max-width: 720px;
+    }
+    .fea-intro p {
+      margin-bottom: 0 !important;
+      color: var(--navy) !important;
+      font-size: 0.95rem !important;
+    }
+    .img-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+    .img-pair .project-img-wrap { margin-bottom: 0; }
+    .eq-block {
+      background: var(--bg-alt);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.6rem;
+      margin: 1.2rem 0 1.5rem;
+      max-width: 540px;
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      color: var(--navy);
+      line-height: 2;
+    }
+    .eq-block .eq-label {
+      font-size: 0.65rem;
+      font-family: var(--mono);
+      color: var(--accent);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+    .eq-block .eq-line {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .eq-frac {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      vertical-align: middle;
+      margin: 0 0.15rem;
+      line-height: 1.3;
+    }
+    .eq-frac .eq-num {
+      border-bottom: 1.5px solid var(--navy);
+      padding-bottom: 1px;
+      font-size: 0.85rem;
+    }
+    .eq-frac .eq-den {
+      font-size: 0.85rem;
+      padding-top: 1px;
+    }
+    .eq-result {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .eq-var { font-style: italic; }
+    .data-table-wrap {
+      overflow-x: auto;
+      margin: 1.5rem 0 2rem;
+      border-radius: var(--radius);
+      border: 1.5px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--body);
+      font-size: 0.9rem;
+      background: var(--bg-card);
+    }
+    .data-table thead tr {
+      background: var(--accent);
+      color: #fff;
+    }
+    .data-table thead th {
+      padding: 0.75rem 1.2rem;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      text-align: left;
+      text-transform: uppercase;
+    }
+    .data-table tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background var(--transition);
+    }
+    .data-table tbody tr:last-child { border-bottom: none; }
+    .data-table tbody tr:hover { background: var(--accent-pale); }
+    .data-table td {
+      padding: 0.75rem 1.2rem;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+    .data-table td:first-child {
+      color: var(--navy);
+      font-weight: 600;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+    }
+    .data-table td.val-new {
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .params-list {
+      list-style: none !important;
+      margin: 0 0 1rem !important;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .params-list li {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      padding-left: 0 !important;
+      color: var(--text-muted) !important;
+      font-size: 0.92rem !important;
+    }
+    .params-list li::before { display: none !important; }
+    .params-list .param-name {
+      font-family: var(--mono);
+      font-style: italic;
+      color: var(--navy);
+      font-weight: 700;
+      min-width: 110px;
+      font-size: 0.82rem;
+    }
+    .result-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(16,185,129,0.08);
+      border: 1.5px solid rgba(16,185,129,0.25);
+      border-radius: var(--radius);
+      padding: 0.9rem 1.2rem;
+      margin: 1.25rem 0 1.5rem;
+      max-width: 520px;
+    }
+    .result-badge .rb-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .result-badge .rb-text {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: #065f46;
+      line-height: 1.5;
+    }
+    .result-badge .rb-text strong {
+      color: var(--green);
+      font-weight: 700;
+      display: block;
+    }
+    .takeaway-box {
+      background: var(--navy);
+      border-radius: var(--radius-lg);
+      padding: 2rem 2.2rem;
+      margin-top: 3rem;
+      max-width: 720px;
+    }
+    .takeaway-box h3 {
+      font-family: var(--display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .takeaway-box h3::before {
+      content: '//';
+      font-family: var(--mono);
+      color: #60A5FA;
+      font-size: 0.85rem;
+    }
+    .takeaway-box p {
+      color: rgba(255,255,255,0.65) !important;
+      font-size: 0.92rem !important;
+      line-height: 1.8 !important;
+      max-width: none !important;
+      margin-bottom: 0 !important;
+    }
+    .takeaway-box strong { color: #93C5FD !important; }
+    .material-block {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem 2.2rem;
+      margin: 2rem 0;
+      max-width: 760px;
+      box-shadow: var(--shadow-sm);
+    }
+    .material-block h3 {
+      font-family: var(--display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+    .material-block p {
+      color: var(--text-muted) !important;
+      font-size: 0.92rem !important;
+      line-height: 1.8 !important;
+      max-width: none !important;
+      margin-bottom: 0.75rem !important;
+    }
+    .material-block p:last-child { margin-bottom: 0 !important; }
+    .material-block strong { color: var(--navy) !important; }
+    .material-table-wrap {
+      overflow-x: auto;
+      margin: 1rem 0;
+      border-radius: var(--radius);
+      border: 1.5px solid var(--border);
+    }
+    .material-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--body);
+      font-size: 0.88rem;
+      background: var(--bg-alt);
+    }
+    .material-table thead tr {
+      background: var(--accent);
+      color: #fff;
+    }
+    .material-table thead th {
+      padding: 0.6rem 1rem;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      text-align: left;
+      text-transform: uppercase;
+    }
+    .material-table tbody td {
+      padding: 0.6rem 1rem;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+    }
+    .material-table tbody tr:last-child td { border-bottom: none; }
+    .material-table tbody td:first-child {
+      color: var(--navy);
+      font-weight: 600;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+    }
+    @media (max-width: 600px) {
+      .img-pair { grid-template-columns: 1fr; }
+      .eq-block { font-size: 0.82rem; padding: 1rem 1.1rem; }
+      .data-table thead th { font-size: 0.65rem; padding: 0.6rem 0.8rem; }
+      .data-table td { padding: 0.6rem 0.8rem; font-size: 0.82rem; }
+      .takeaway-box { padding: 1.4rem 1.2rem; }
+      .material-block { padding: 1.4rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <nav class="navbar" id="navbar">
+    <a href="../index.html" class="nav-logo">KP <span>/ engineer</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#internships">Internships</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+      <li><a href="../resume.html" class="nav-resume-btn">Resume</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="../index.html#about" onclick="closeMobileNav()">About</a>
+    <a href="../index.html#internships" onclick="closeMobileNav()">Internships</a>
+    <a href="../index.html#projects" onclick="closeMobileNav()">Projects</a>
+    <a href="../index.html#contact" onclick="closeMobileNav()">Contact</a>
+    <a href="../resume.html">Resume</a>
+  </div>
+
+  <div class="page-hero">
+    <a href="../index.html#projects" class="page-back">Back to Projects</a>
+    <p class="section-eyebrow">Robotics / Mechanical Design / Controls / FEA</p>
+    <h1 class="page-title">4-DOF Robotic Arm</h1>
+    <div class="page-tags">
+      <span class="tag">SolidWorks</span>
+      <span class="tag">ANSYS</span>
+      <span class="tag">Arduino</span>
+      <span class="tag">Inverse Kinematics</span>
+      <span class="tag">FEA</span>
+      <span class="tag">Webots</span>
+      <span class="tag">ROS2</span>
+      <span class="tag">FDM Printing</span>
+      <span class="tag">DFM</span>
+      <span class="tag">Beam Theory</span>
+    </div>
+  </div>
+
+  <div class="page-content">
+
+    <div class="takeaway-box" style="margin-top:0;margin-bottom:3rem;background:linear-gradient(135deg, var(--accent) 0%, var(--navy-mid) 100%);">
+      <h3 style="color:#fff;">Key Takeaways</h3>
+      <ul style="list-style:none;margin:0;">
+        <li style="padding-left:1.4rem;color:rgba(255,255,255,0.85);font-size:0.91rem;line-height:1.75;margin-bottom:0.5rem;">FEA is most valuable when used alongside engineering fundamentals, not in place of them</li>
+        <li style="padding-left:1.4rem;color:rgba(255,255,255,0.85);font-size:0.91rem;line-height:1.75;margin-bottom:0.5rem;">PLA behaves as a brittle material with negligible plastic deformation, so linear elastic modeling is the physically appropriate choice</li>
+        <li style="padding-left:1.4rem;color:rgba(255,255,255,0.85);font-size:0.91rem;line-height:1.75;margin-bottom:0.5rem;">Hand calculations and FEA should agree. If they don't, something is wrong with the model</li>
+        <li style="padding-left:1.4rem;color:rgba(255,255,255,0.85);font-size:0.91rem;line-height:1.75;margin-bottom:0.5rem;">Beam theory identified the critical load path before I ever opened the FEA software</li>
+        <li style="padding-left:1.4rem;color:rgba(255,255,255,0.85);font-size:0.91rem;line-height:1.75;margin-bottom:0.5rem;">Thickness matters more than width for bending stiffness (cubic vs linear dependence)</li>
+      </ul>
+    </div>
+
+    <div class="project-video-wrap">
+      <video controls autoplay muted loop playsinline poster="robotic-arm/arm1.jpeg">
+        <source src="robotic-arm/robotarm.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <p class="img-caption">Robotic arm executing precision movements with real-time inverse kinematics, simulated in Webots and mirrored on physical hardware.</p>
+
+    <div class="highlight-grid reveal">
+      <div class="highlight-card">
+        <div class="highlight-num">4-DOF</div>
+        <div class="highlight-label">Degrees of freedom: shoulder, elbow, wrist rotation, gripper</div>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-num">50%</div>
+        <div class="highlight-label">Increase in critical linkage thickness after FEA-guided redesign</div>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-num">~0.0025</div>
+        <div class="highlight-label">Peak equivalent strain, FEA result matched beam theory prediction</div>
+      </div>
+    </div>
+
+    <h2>Overview</h2>
+    <p>
+      This project is a fully realized 4-DOF robotic arm. I designed it from the ground up in
+      <strong>SolidWorks</strong>, 3D printed it for physical validation, and controlled it via
+      <strong>Arduino</strong> with a real-time inverse kinematics solver. The design prioritizes
+      modularity, precision, and Design for Manufacturability (DFM), making every component
+      swappable and print-optimized.
+    </p>
+    <p>
+      The simulation pipeline couples <strong>Webots</strong> with <strong>ROS2</strong>,
+      allowing me to test joint trajectories in the virtual environment before mirroring
+      them on physical hardware. Structural analysis in <strong>ANSYS Discovery</strong>
+      drove iterative gripper redesigns, validated against classical beam theory before
+      committing to a design change.
+    </p>
+
+    <h2>Technical Highlights</h2>
+    <ul>
+      <li>Inverse kinematics solver for smooth, real-time joint articulation across all 4 DOF</li>
+      <li>Real-time sensor integration via serial communication between Arduino and host PC</li>
+      <li>Full FEA pipeline in ANSYS with mesh optimization, loading conditions, strain analysis</li>
+      <li>Webots + ROS2 co-simulation synced with physical hardware for safe trajectory testing</li>
+      <li>DFM-optimized linkages, all parts designed for FDM printing with minimal support material</li>
+    </ul>
+
+    <h2>Exploded View</h2>
+    <div class="project-video-wrap">
+      <video controls playsinline poster="robotic-arm/explodedarmthumbnail.jpeg">
+        <source src="robotic-arm/explodedvidrobotarm.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <p class="img-caption">Visual breakdown of the arm's mechanical components and servo placements. Designed for easy assembly, maintenance, and part replacement.</p>
+
+    <div class="fea-section-divider"></div>
+
+    <p class="section-eyebrow" style="margin-bottom:0.5rem;">Discovery Phase</p>
+    <h2 style="margin-top:0.5rem;">Understanding the Load Path</h2>
+
+    <div class="fea-intro">
+      <p>
+        Even a small amount of deflection at the gripper fingertips can propagate into a much
+        larger positioning error by the time it reaches the object being manipulated. If the robot
+        is holding a long component, a fraction of a millimeter of movement at the gripper can
+        translate into several millimeters of error at the far end. Minimizing structural compliance
+        is therefore, extremely important!
+      </p>
+    </div>
+
+    <p>
+      To understand how the mechanism behaved under load, I built a finite element model of the
+      complete gripper assembly in <strong>ANSYS Discovery</strong>. The goal was to identify where
+      strain concentrated, validate the simulation with classical mechanics, and use those results
+      to make <strong>targeted design improvements</strong>.
+    </p>
+
+    <div class="fea-section-divider"></div>
+
+    <p class="section-eyebrow" style="margin-bottom:0.5rem;">Material Definition</p>
+    <h2 style="margin-top:0.5rem;">Creating a Custom PLA Material Model</h2>
+
+    <div class="material-block">
+      <h3>Why Linear Elastic?</h3>
+      <p>
+        A lot of people assume that more complex material models are automatically better. They're not.
+        The right model depends on how the material actually behaves.
+      </p>
+      <p>
+        FDM-printed PLA is essentially a <strong>brittle material</strong>. Looking at published tensile test data
+        for solid PLA specimens, the material fails at around 2.9% strain and 45 MPa with essentially no appreciable
+        plastic plateau. There's no yield point followed by strain hardening. It just breaks.
+      </p>
+      <p>
+        If I had forced this data into ANSYS's Multilinear Isotropic Hardening (MISO) model, I would have been
+        telling the software that the material can continue accumulating plastic strain before failure, even though
+        the actual test data doesn't show that behavior.
+      </p>
+      <p>
+        Since my analysis is focused on <strong>stiffness and deflection</strong> (not failure prediction),
+        a linear elastic model with the experimentally measured modulus is the most defensible choice.
+      </p>
+    </div>
+
+    <p>
+      Based on published tensile testing data for solid FDM PLA specimens, I created a custom material
+      definition in ANSYS with the following properties:
+    </p>
+
+    <div class="material-table-wrap">
+      <table class="material-table">
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Value</th>
+            <th>Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Young's Modulus</td>
+            <td>2.13 GPa</td>
+            <td>Experimental tensile test (solid specimens)</td>
+          </tr>
+          <tr>
+            <td>Poisson's Ratio</td>
+            <td>0.36</td>
+            <td>Literature value for PLA</td>
+          </tr>
+          <tr>
+            <td>Density</td>
+            <td>1240 kg/m³</td>
+            <td>Manufacturer datasheet</td>
+          </tr>
+          <tr>
+            <td>Tensile Strength</td>
+            <td>~45 MPa</td>
+            <td>Experimental (for reference, not used in linear model)</td>
+          </tr>
+          <tr>
+            <td>Material Model</td>
+            <td>Linear Elastic, Isotropic</td>
+            <td>Brittle failure behavior</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      The key insight here: PLA doesn't yield and strain-harden like steel or aluminum. It behaves elastically
+      until it fractures. 
+    </p>
+
+    <div class="fea-section-divider"></div>
+
+    <p class="section-eyebrow" style="margin-bottom:0.5rem;">Mechanical Design</p>
+    <h2 style="margin-top:0.5rem;">Importing and Simplifying the CAD Model</h2>
+    <p>
+      I started by importing the complete CAD assembly into ANSYS Discovery. The original model
+      contained many manufacturing details like gear teeth, fillets, chamfers, and rounded edges that
+      dramatically increase mesh complexity without significantly affecting the global structural
+      response of the mechanism.
+    </p>
+
+    <div class="img-pair">
+      <div>
+        <div class="project-img-wrap">
+          <img src="robotic-arm/imported_robogripper.jpeg" alt="Original imported CAD assembly" />
+        </div>
+        <p class="img-caption">Original CAD assembly imported into ANSYS Discovery</p>
+      </div>
+      <div>
+        <div class="project-img-wrap">
+          <img src="robotic-arm/simplified_geom_gripper.jpeg" alt="Simplified CAD geometry for FEA" />
+        </div>
+        <p class="img-caption">Simplified geometry with manufacturing details removed, load-bearing features preserved</p>
+      </div>
+    </div>
+
+    <p>
+      By removing cosmetic features while preserving all load-bearing geometry, the simplified model
+      meshed more reliably and solved significantly faster without sacrificing structural accuracy.
+    </p>
+
+    <h2>Building a High-Quality Mesh</h2>
+    <p>
+      Rather than relying on the default mesh, I optimized it to improve both convergence and
+      solution accuracy. Most components were assigned <strong>MultiZone meshing</strong> to
+      maximize the number of hexahedral elements. Body sizing controls and part decomposition
+      were applied where necessary to maintain high-quality mapped meshes throughout the assembly.
+    </p>
+    <p>
+      The target was to keep the majority of elements above <strong>80% element quality</strong>,
+      producing a mesh dominated by structured hexahedral cells rather than lower-quality
+      tetrahedral elements.
+    </p>
+
+    <div class="project-img-wrap" style="max-width:720px;">
+      <img src="robotic-arm/mesh_qual.jpeg" alt="Optimized FEA mesh with high element quality" />
+    </div>
+    <p class="img-caption">Final mesh with MultiZone hexahedral-dominant mesh with over 80% element quality across the assembly</p>
+
+    <h2>Defining the Loading Conditions</h2>
+    <p>
+      To represent the gripper's mounting on the robotic arm, I fixed the mounting interface at the
+      wrist attachment point. Two remote loads were then applied directly to the gripping surfaces:
+    </p>
+    <ul>
+      <li>2 N on the left finger</li>
+      <li>2 N on the right finger</li>
+    </ul>
+    <p>
+      This produced a total gripping load of <strong>4 N</strong>, representing approximately a
+      <strong>400 g payload</strong>, the baseline for evaluating mechanism stiffness.
+    </p>
+
+    <h2>Identifying the Weak Link</h2>
+    <p>
+      After running the initial simulation, I examined the equivalent strain distribution throughout
+      the assembly. Instead of the highest strain occurring at the fingertips as expected, it was
+      <strong>highly concentrated within one of the shorter linkage members</strong> responsible for
+      transmitting motion through the mechanism.
+    </p>
+
+    <div class="project-img-wrap" style="max-width:720px;">
+      <img src="robotic-arm/initial_vonstrain.jpeg" alt="Initial equivalent strain plot with strain concentrated in linkage" />
+    </div>
+    <p class="img-caption">Initial equivalent strain distribution with peak strain unexpectedly concentrated in a short motion-transmission linkage, not the fingertips</p>
+
+    <p>
+      This immediately told me something important: improving the stiffness of the fingers themselves
+      would have little impact if this linkage continued acting as the primary source of compliance.
+    </p>
+
+    <h2>Using Beam Theory to Guide the Design</h2>
+    <p>
+      Rather than randomly increasing dimensions, I isolated the critical
+      linkage and treated it as a <strong>cantilever beam</strong>. From elementary beam theory, the
+      second moment of area depends linearly on width but <strong>cubically on thickness</strong>:
+    </p>
+
+    <div class="eq-block">
+      <div class="eq-label">Second Moment of Area</div>
+      <div class="eq-line">
+        <span class="eq-var">I</span>
+        <span>=</span>
+        <span class="eq-frac">
+          <span class="eq-num"><span class="eq-var">b</span><span class="eq-var">h</span>³</span>
+          <span class="eq-den">12</span>
+        </span>
+      </div>
+    </div>
+
+    <p>
+      This means increasing thickness is far more effective at reducing bending than increasing width.
+      However, real design constraints applied: the linkage rotates about cylindrical pins, which
+      limited how much additional thickness could be added. Width had considerably more available space.
+    </p>
+    <p>With those constraints in mind, I redesigned only the linkage cross-section:</p>
+
+    <div class="data-table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th>Original</th>
+            <th>Optimized</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Length</td>
+            <td>37 mm</td>
+            <td class="val-new">37 mm</td>
+          </tr>
+          <tr>
+            <td>Width</td>
+            <td>6.0 mm</td>
+            <td class="val-new">9.3 mm</td>
+          </tr>
+          <tr>
+            <td>Thickness</td>
+            <td>2.0 mm</td>
+            <td class="val-new">3.0 mm</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      Thickness increased by <strong>50%</strong>, the most effective lever given the cubic
+      dependence, while width was also increased to take advantage of the available geometric
+      clearance and further boost stiffness without affecting mechanism functionality.
+    </p>
+
+    <h2>Validating the Design with Hand Calculations</h2>
+    <p>
+      Before trusting a second FEA result, I verified the optimized linkage analytically by treating
+      it as a cantilever beam under a 2 N end load:
+    </p>
+
+    <ul class="params-list">
+      <li><span class="param-name">Length =</span> 37 mm</li>
+      <li><span class="param-name">Width =</span> 9.3 mm</li>
+      <li><span class="param-name">Thickness =</span> 3.0 mm</li>
+      <li><span class="param-name">E =</span> 2.13 GPa (from custom material)</li>
+    </ul>
+
+    <div class="eq-block">
+      <div class="eq-label">Second Moment of Area</div>
+      <div class="eq-line">
+        <span class="eq-var">I</span>
+        <span>=</span>
+        <span class="eq-frac">
+          <span class="eq-num"><span class="eq-var">b</span><span class="eq-var">h</span>³</span>
+          <span class="eq-den">12</span>
+        </span>
+        <span>=</span>
+        <span class="eq-result">2.09 × 10⁻¹¹ m⁴</span>
+      </div>
+    </div>
+
+    <div class="eq-block">
+      <div class="eq-label">Bending Moment at Fixed End</div>
+      <div class="eq-line">
+        <span class="eq-var">M</span>
+        <span>=</span>
+        <span class="eq-var">F</span><span class="eq-var">L</span>
+        <span>=</span>
+        <span class="eq-result">0.074 N·m</span>
+      </div>
+    </div>
+
+    <div class="eq-block">
+      <div class="eq-label">Maximum Bending Stress (Flexure Equation)</div>
+      <div class="eq-line">
+        <span class="eq-var">σ</span>
+        <span>=</span>
+        <span class="eq-frac">
+          <span class="eq-num"><span class="eq-var">M</span><span class="eq-var">c</span></span>
+          <span class="eq-den"><span class="eq-var">I</span></span>
+        </span>
+        <span>≈</span>
+        <span class="eq-result">5.31 MPa</span>
+      </div>
+    </div>
+
+    <div class="eq-block">
+      <div class="eq-label">Maximum Surface Strain (Hooke's Law)</div>
+      <div class="eq-line">
+        <span class="eq-var">ε</span>
+        <span>=</span>
+        <span class="eq-frac">
+          <span class="eq-num"><span class="eq-var">σ</span></span>
+          <span class="eq-den"><span class="eq-var">E</span></span>
+        </span>
+        <span>≈</span>
+        <span class="eq-result">0.0025</span>
+      </div>
+    </div>
+
+    <p>
+      This provided an independent analytical estimate before running the updated simulation,
+      giving a predicted peak surface strain of <strong>ε ≈ 0.0025</strong>.
+    </p>
+
+    <h2>Final Simulation Results</h2>
+    <p>
+      After updating the linkage geometry, I reran the full assembly simulation using identical
+      material properties, mesh strategy, loading conditions, and boundary conditions as the
+      initial run.
+    </p>
+
+    <div class="project-img-wrap" style="max-width:720px;">
+      <img src="robotic-arm/final_vonstrain.jpeg" alt="Final equivalent strain plot after linkage redesign" />
+    </div>
+    <p class="img-caption">Final equivalent strain distribution with concentration in the critical linkage significantly reduced; load path now distributes more evenly through the assembly</p>
+
+    <div class="result-badge">
+      <span class="rb-icon">✓</span>
+      <span class="rb-text">
+        <strong>FEA matched hand calculation</strong>
+        Peak equivalent strain: 0.0025 to 0.0030 (FEA) vs. 0.0025 predicted analytically.
+        Agreement confirmed the simulation was capturing real structural behavior, not a numerical artifact.
+      </span>
+    </div>
+
+    <p>
+      The strain concentration within the critical linkage was significantly reduced, and the load
+      path became much more evenly distributed throughout the mechanism, exactly what beam theory
+      predicted.
+    </p>
+
+    <div class="takeaway-box">
+      <h3>Engineering Takeaway</h3>
+      <p>
+        FEA is most valuable when used <strong>alongside engineering fundamentals</strong>. 
+        I used simulation to identify the critical load path, applied <strong>beam theory</strong> to
+        understand why that region was failing, designed around real constraints,
+        and then validated the optimized design using both analytical calculation and finite element
+        analysis. Simulation should be used as a decision-making tool grounded in first-principles
+        mechanics.
+      </p>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-left">2025 <span>Khush Patel</span> / Built with precision</div>
+    <div class="footer-right">
+      <a href="../index.html">Home</a>
+      <a href="../index.html#projects">All Projects</a>
+      <a href="../index.html#contact">Contact</a>
+    </div>
+  </footer>
+
+  <script src="../main.js"></script>
+</body>
+</html>
