@@ -146,7 +146,7 @@
       <div>u(x,t) = ū(x) + Σ<sub>k</sub> a<sub>k</sub>(t) · φ<sub>k</sub>(x)</div>
     </div>
 
-    <p>Where ū(x) is the mean flow, φ<sub>k</sub>(x) are spatial modes, and a<sub>k</sub>(t) are temporal coefficients. Computed via SVD of the snapshot matrix. Typically, the first handful of modes capture <strong>&gt;95% of flow energy</strong>, compressing millions of points to dozens of coefficients.</p>
+    <p>Where ū(x) is the mean flow, φ<sub>k</sub>(x) are spatial modes, and a<sub>k</sub>(t) are temporal coefficients. Computed via SVD of the snapshot matrix. Typically, the first handful of modes capture <strong>&gt;95% of flow energy</strong>, compressing down from millions of spatial vectors to dozens of coefficients.</p>
 
     <p><strong>Process:</strong> Stack velocity snapshots into matrix → subtract mean → SVD → keep top r modes → project onto reduced basis.</p>
 
