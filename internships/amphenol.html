@@ -23,202 +23,159 @@
       font-weight: 700;
       letter-spacing: 0.05em;
     }
-    /* Takeaway box at the top */
     .takeaway-top {
       background: var(--navy);
       border-radius: var(--radius-lg);
-      padding: 2rem 2.2rem;
-      margin-bottom: 3rem;
+      padding: 1.6rem 2rem;
+      margin-bottom: 2.5rem;
       max-width: 820px;
     }
     .takeaway-top h3 {
       font-family: var(--display);
-      font-size: 0.78rem;
+      font-size: 0.72rem;
       font-weight: 700;
       color: #60A5FA;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      margin-bottom: 1rem;
+      margin-bottom: 0.85rem;
     }
     .takeaway-top ul { list-style: none; margin: 0; }
     .takeaway-top ul li {
       position: relative;
-      padding-left: 1.2rem;
+      padding-left: 1.1rem;
       color: rgba(255,255,255,0.78);
-      font-size: 0.91rem;
-      line-height: 1.7;
-      margin-bottom: 0.55rem;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      margin-bottom: 0.45rem;
     }
+    .takeaway-top ul li:last-child { margin-bottom: 0; }
     .takeaway-top ul li::before {
       content: '';
       position: absolute;
-      left: 0;
-      top: 0.55em;
-      width: 5px;
-      height: 5px;
+      left: 0; top: 0.52em;
+      width: 5px; height: 5px;
       background: #60A5FA;
       border-radius: 50%;
     }
-    .takeaway-top ul li:last-child { margin-bottom: 0; }
     .takeaway-top strong { color: #93C5FD; }
-    /* Callout block */
     .callout {
       background: var(--accent-pale);
       border-left: 4px solid var(--accent);
       border-radius: 0 var(--radius) var(--radius) 0;
-      padding: 1.1rem 1.4rem;
-      margin-bottom: 1.75rem;
+      padding: 1rem 1.3rem;
+      margin-bottom: 1.5rem;
       max-width: 760px;
     }
-    .callout p { margin-bottom: 0; color: var(--navy); font-size: 0.94rem; }
-    /* Product image pair */
+    .callout p { margin-bottom: 0; color: var(--navy); font-size: 0.93rem; }
+    .confidential-note {
+      background: rgba(245,158,11,0.08);
+      border: 1.5px solid rgba(245,158,11,0.3);
+      border-left: 4px solid #F59E0B;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 0.9rem 1.3rem;
+      margin-bottom: 2rem;
+      max-width: 820px;
+    }
+    .confidential-note p { margin: 0; font-size: 0.86rem; color: var(--text-muted); line-height: 1.65; }
+    .confidential-note strong { color: #B45309; font-weight: 700; }
     .product-pair {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
+      gap: 1.1rem;
       margin-bottom: 0.75rem;
     }
     .product-pair .project-img-wrap { margin-bottom: 0; }
     .product-pair .project-img-wrap img {
-      width: 100%;
-      height: 260px;
+      width: 100%; height: 220px;
       object-fit: contain;
-      padding: 1.2rem;
-      background: #fff;
+      padding: 1rem; background: #fff;
     }
-    /* Principle cards */
-    .principle-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 1rem;
-      margin: 1.5rem 0 2.5rem;
-    }
-    .principle-card {
-      background: var(--bg-card);
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.3rem 1.2rem;
-      box-shadow: var(--shadow-sm);
-      transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
-    }
-    .principle-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); border-color: var(--accent-light); }
-    .principle-title { font-family: var(--display); font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 0.4rem; }
-    .principle-desc { font-size: 0.83rem; color: var(--text-muted); line-height: 1.65; }
-    /* Machinist block */
-    .machinist-block {
-      background: var(--navy);
-      border-radius: var(--radius-lg);
-      padding: 2rem 2.2rem;
-      margin: 2.5rem 0;
-      max-width: 820px;
-    }
-    .machinist-block h3 { font-family: var(--display); font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem; }
-    .machinist-block p { color: rgba(255,255,255,0.72); font-size: 0.92rem; line-height: 1.8; max-width: none; margin-bottom: 0.75rem; }
-    .machinist-block p:last-child { margin-bottom: 0; }
-    .machinist-block strong { color: #93C5FD; }
-    /* Eq blocks */
-    .eq-block {
-      background: var(--bg-alt);
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.1rem 1.5rem;
-      margin: 1.1rem 0 1.4rem;
-      max-width: 520px;
-      font-family: var(--mono);
-      font-size: 0.88rem;
-      color: var(--navy);
-      line-height: 1.9;
-    }
-    .eq-block .eq-label { font-size: 0.62rem; color: var(--accent); letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; margin-bottom: 0.3rem; }
-    .eq-block .eq-line { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
-    .eq-frac { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; margin: 0 0.1rem; line-height: 1.3; }
-    .eq-frac .eq-num { border-bottom: 1.5px solid var(--navy); padding-bottom: 1px; font-size: 0.82rem; }
-    .eq-frac .eq-den { font-size: 0.82rem; padding-top: 1px; }
-    .eq-result { font-weight: 700; color: var(--accent); }
-    .eq-var { font-style: italic; }
-    /* Tolerance image */
-    .tol-img-wrap {
-      width: 100%;
-      max-width: 720px;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      border: 1.5px solid var(--border);
-      margin-bottom: 0.75rem;
-      box-shadow: var(--shadow-md);
-    }
-    .tol-img-wrap img { width: 100%; display: block; object-fit: contain; max-height: 440px; padding: 1rem; background: #fff; }
-    .page-divider { width: 100%; height: 1px; background: var(--border); margin: 3rem 0 2.5rem; }
-    /* GD&T section with fixtures */
-    .gdt-section-grid {
+    .gdt-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2.5rem;
       align-items: start;
-      margin-top: 1.5rem;
+      margin-top: 1.25rem;
     }
-    .gdt-text-content p { max-width: none; }
-    .confidential-note {
-      background: var(--navy);
-      border-radius: var(--radius);
-      padding: 1.2rem 1.4rem;
-      margin: 1.5rem 0;
-      border-left: 4px solid #F59E0B;
-    }
-    .confidential-note p {
-      color: rgba(255,255,255,0.85);
-      font-size: 0.9rem;
-      line-height: 1.7;
-      margin: 0;
-    }
-    .confidential-note strong {
-      color: #FCD34D;
-      font-weight: 700;
-    }
-    .fixture-gallery {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .fixture-img-wrap {
+    .gdt-drawing {
       border-radius: var(--radius);
       overflow: hidden;
       border: 1.5px solid var(--border);
+      box-shadow: var(--shadow-sm);
       background: #fff;
+    }
+    .gdt-drawing img {
+      width: 100%; height: auto;
+      display: block; object-fit: contain;
+    }
+    .tol-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.25rem 0 0.5rem;
+      max-width: 820px;
+    }
+    .tol-pair-wrap {
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1.5px solid var(--border);
       box-shadow: var(--shadow-sm);
     }
-    .fixture-img-wrap img {
-      width: 100%;
-      height: auto;
-      display: block;
+    .tol-pair-wrap img {
+      width: 100%; display: block;
       object-fit: contain;
+      background: #fff;
+      padding: 0.75rem;
     }
-    .fixture-img-wrap.drawing img {
-      padding: 0.5rem;
-    }
-    .fixture-img-wrap.photo img {
-      object-fit: cover;
-      height: 180px;
-    }
-    .fixture-caption {
+    .eq-block {
+      background: var(--bg-alt);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.9rem 1.3rem;
+      margin: 0.9rem 0 1.2rem;
+      max-width: 480px;
       font-family: var(--mono);
-      font-size: 0.7rem;
-      color: var(--muted);
-      text-align: center;
-      margin-top: 0.5rem;
+      font-size: 0.86rem;
+      color: var(--navy);
+      line-height: 1.9;
     }
-    @media (max-width: 900px) {
-      .gdt-section-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-      .fixture-gallery {
-        order: -1;
-      }
+    .eq-block .eq-label {
+      font-size: 0.6rem; color: var(--accent);
+      letter-spacing: 0.14em; text-transform: uppercase;
+      font-weight: 700; margin-bottom: 0.25rem;
     }
-    @media (max-width: 650px) {
-      .product-pair { grid-template-columns: 1fr; }
-      .principle-grid { grid-template-columns: 1fr; }
-      .machinist-block, .takeaway-top { padding: 1.4rem 1.2rem; }
+    .eq-block .eq-line { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
+    .eq-frac { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; margin: 0 0.1rem; line-height: 1.3; }
+    .eq-frac .eq-num { border-bottom: 1.5px solid var(--navy); padding-bottom: 1px; font-size: 0.8rem; }
+    .eq-frac .eq-den { font-size: 0.8rem; padding-top: 1px; }
+    .eq-result { font-weight: 700; color: var(--accent); }
+    .eq-var { font-style: italic; }
+    .page-divider { width: 100%; height: 1px; background: var(--border); margin: 2rem 0; }
+    .skill-list {
+      list-style: none;
+      margin: 0.75rem 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .skill-list li {
+      position: relative;
+      padding-left: 1.1rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+    .skill-list li::before {
+      content: '→';
+      position: absolute; left: 0;
+      color: var(--accent);
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 0.78rem;
+    }
+    @media (max-width: 700px) {
+      .product-pair, .gdt-grid, .tol-pair { grid-template-columns: 1fr; }
+      .takeaway-top { padding: 1.2rem 1.2rem; }
     }
   </style>
 </head>
@@ -261,41 +218,44 @@
       <span class="intern-meta-pill">SolidWorks</span>
       <span class="intern-meta-pill">ANSYS FEA</span>
       <span class="intern-meta-pill">GD&amp;T</span>
-      <span class="intern-meta-pill">RSS Tolerance Stack</span>
+      <span class="intern-meta-pill">Tolerance Stack</span>
       <span class="intern-meta-pill">DFM / DFMEA</span>
       <span class="intern-meta-pill">Machine Shop</span>
     </div>
   </div>
 
   <div class="page-content">
-<div class="confidential-note">
-          <p>
-            <strong>IMPORTANT! I am not allowed to discuss the majority of my work at this internship due to confidentiality agreements.</strong> 
-            The mechanism designs, simulation results, and product-specific details are proprietary. 
-            What I can share are some simple test fixtures I helped design and fabricate, which demonstrate basic GD&amp;T and drawing practices.
-            <strong> Understand this is not nearly representative of the full scope of my work, which was much more complex. </strong>
-          </p>
-        </div>
-    <!-- TAKEAWAY AT TOP -->
+
+    <!-- NDA NOTE -->
+    <div class="confidential-note">
+      <p>
+        <strong>Heads up:</strong> Most of my work here is under NDA, so I can't show the actual mechanism designs, simulation results, or product details.
+        To show the skills I picked up, I'm using work from a personal project (double wishbone suspension) that uses the same
+        GD&T, drawing, and tolerance analysis methods I used every day at Amphenol.
+        <strong>The actual internship work was much more sophisticated than what's shown here.</strong>
+      </p>
+    </div>
+
+    <!-- TAKEAWAYS -->
     <div class="takeaway-top">
-      <h3>What I took away from this</h3>
+      <h3>What I learned</h3>
       <ul>
-        <li><strong>Document design intent before touching CAD.</strong> Every dimension needs a functional reason.</li>
-        <li><strong>GD&amp;T is how you communicate with the shop.</strong> It tells the machinist what actually matters and what you're fine with loosening up.</li>
-        <li><strong>RSS vs arithmetic is a deliberate choice, not a default.</strong> For a one-time prototype you want worst-case arithmetic. RSS is the right tool when qualifying tolerances across a production population.</li>
-        <li><strong>FEA and physical testing together.</strong> When both agree, you can trust the result.</li>
-        <li>Spending time on the shop floor every day made me a better designer faster than anything else could have.</li>
+        <li><strong>Design intent before CAD.</strong> Every dimension should have a reason.</li>
+        <li><strong>GD&T communicates with machinists.</strong> It tells them what actually matters and what they can loosen up.</li>
+        <li><strong>Worst-case vs RSS.</strong> Prototypes get worst-case. Production gets RSS.</li>
+        <li><strong>Run FEA and physical tests together.</strong> When they match, you know you can trust the model.</li>
+        <li>Spending time on the shop floor every day taught me more about design than any class could.</li>
       </ul>
     </div>
 
-    <!-- PRODUCT OVERVIEW -->
-    <h2>The Product: XtremeSPEED HSIO Connector System</h2>
+    <!-- PRODUCT -->
+    <h2>The Product</h2>
     <div class="callout">
       <p>
-        The XtremeSPEED High-Speed I/O platform handles ultra-high bandwidth connectivity for
-        hyperscale data centers, AI accelerators, and cloud infrastructure. My work was on the
-        <strong>XtremePASS standard</strong>, a next-generation midplane bypass connector
-        built to push signal integrity.
+        The <strong>XtremeSPEED HSIO platform</strong> is built for high bandwidth connections in data centers
+        and AI systems. I worked on the <strong>XtremePASS standard</strong>, a midplane bypass connector running at
+        112+ Gbps PAM4. At those speeds, mechanical tolerances directly affect signal quality.
+      </p>
     </div>
 
     <div class="product-pair">
@@ -303,78 +263,57 @@
         <div class="project-img-wrap">
           <img src="../assets/images/amphenol_connector_8x8.jpeg" alt="XtremePASS 8x8x2 connector system" />
         </div>
-        <p class="img-caption">From Amphenol Wesbite. XtremePASS 8x8x2 system, midplane bypass connector for AI and hyperscale data center applications</p>
+        <p class="img-caption">XtremePASS 8×8×2 system, midplane bypass connector</p>
       </div>
       <div>
         <div class="project-img-wrap">
-          <img src="../assets/images/amphenol_hsio_connector.jpeg" alt="HSIO individual connector detail" />
+          <img src="../assets/images/amphenol_hsio_connector.jpeg" alt="HSIO connector detail" />
         </div>
-        <p class="img-caption">From Amphenol Wesbite. HSIO connector detail, high-density differential pair routing</p>
+        <p class="img-caption">HSIO connector, high-density differential pair routing</p>
       </div>
     </div>
 
     <p>
-      These connectors run at 112+ Gbps PAM4, where mechanical tolerances directly affect
-      electrical performance. A sub-millimeter misalignment in connector housing geometry
-      introduces impedance discontinuities, crosstalk, and insertion loss.
+      If something is off by less than a millimeter, you get impedance problems and signal loss. Getting the mechanical
+      design right isn't just about looks. It determines whether the product actually works.
     </p>
-
 
     <div class="page-divider"></div>
 
-    <!-- GD&T -->
-    <h2>GD&amp;T on Critical Features</h2>
-    
-    <div class="gdt-section-grid">
-      <div class="gdt-text-content">
-        <p>
-          At the signal speeds this product targets, tolerance is an
-          engineering constraint with direct electrical consequences. I implemented detailed
-          <strong>Geometric Dimensioning and Tolerancing</strong> on all critical features,
-          referencing datums that reflect the functional assembly.
-        </p>
-        <p>
-          My callouts covered positional tolerances on hole patterns, true position for alignment
-          features, profile tolerances on mating surfaces, and perpendicularity controls on
-          critical alignment features. The goal was to specify exactly what variation the design can absorb, without over-constraining features that don't need it, 
-          which just drives up cost.
-        </p>
+    <!-- GD&T with steering knuckle drawing -->
+    <h2>GD&T and Drawing Practice</h2>
+    <p>
+      I can't show the connector drawings I made at Amphenol, so here's a steering knuckle I drew for
+      a personal double wishbone suspension project. It uses the same GD&T callouts, datum setup,
+      and drawing standards I used at work every day: positional tolerances, true position on hole patterns,
+      and perpendicularity controls tied to functional datums.
+    </p>
 
+    <div class="gdt-grid">
+      <div class="gdt-drawing">
+        <img src="../assets/images/steering_knuckle_drawing.png" alt="Steering knuckle engineering drawing with GD&T" />
       </div>
-
-      <div class="fixture-gallery">
-        <div class="fixture-img-wrap drawing">
-          <img src="../assets/images/fixture_top_drawing.jpg" alt="Spring Plate Fixture Top drawing with GD&T" />
-        </div>
-        <div class="fixture-img-wrap drawing">
-          <img src="../assets/images/fixture_bottom_drawing.jpg" alt="Spring Plate Fixture Bottom drawing with GD&T" />
-        </div>
-        <div class="fixture-img-wrap photo">
-          <img src="../assets/images/fixture.jpg" alt="Machined fixture assembly in use" />
-        </div>
-        <p class="fixture-caption">Fixture drawings with GD&amp;T callouts, and the machined assembly in use</p>
+      <div>
+        <ul class="skill-list">
+          <li>Datum structure based on assembly requirements</li>
+          <li>Positional tolerances</li>
+          <li>Perpendicularity on critcal interfaces (wheel hub external feature)</li>
+          <li>Realistic tolerances, without over-constraining</li>
+        </ul>
       </div>
     </div>
 
+    <div class="page-divider"></div>
+
     <!-- TOLERANCE STACK -->
-    <h2>Tolerance Stack-Up for a Critical Clearance</h2>
+    <h2>Tolerance Stack-Up Analysis</h2>
     <p>
-      For a new hole feature I was prototyping, I needed to verify that the clearance boundary
-      would always be met so the prototype would assemble correctly. Since this was a
-      <strong>one-time mechanical prototype</strong> rather than a mass-production run, I used
-      a <strong>worst-case arithmetic stack</strong>. Worst-case is the right call here: if
-      the single physical part assembled successfully at worst-case stack, I knew it would fit.
-      No statistical assumptions needed.
-    </p>
-    <p>
-      For reference, RSS would be the right tool if I were qualifying a production tolerance
-      scheme across a large population of parts, where the probability of all contributors
-      hitting their worst-case simultaneously is very low. But for a prototype that has to
-      assemble exactly once, you want to know it fits at the absolute worst combination.
+      For prototypes, I use <strong>worst-case arithmetic</strong>. If it fits at worst-case, it fits. Done.
+      For production, RSS makes more sense since it's really unlikely that every single tolerance hits its worst value at the same time.
     </p>
 
     <div class="eq-block">
-      <div class="eq-label">Worst-Case Arithmetic Stack (used for prototype)</div>
+      <div class="eq-label">Worst-Case (Prototype)</div>
       <div class="eq-line">
         <span class="eq-var">T<sub>total</sub></span>
         <span>=</span>
@@ -383,7 +322,7 @@
     </div>
 
     <div class="eq-block">
-      <div class="eq-label">RSS Statistical Stack (production reference)</div>
+      <div class="eq-label">RSS (Production)</div>
       <div class="eq-line">
         <span class="eq-var">T<sub>RSS</sub></span>
         <span>=</span>
@@ -393,88 +332,46 @@
         </span>
         <span>·</span>
         <span>√( Σ <span class="eq-var">t<sub>i</sub></span>² )</span>
-        <span style="margin-left:0.5rem;font-size:0.77rem;color:var(--text-muted);">× sensitivity factor</span>
+        <span style="margin-left:0.4rem;font-size:0.74rem;color:var(--text-muted);">× sensitivity factor</span>
       </div>
     </div>
 
-    <p>
-      I drew the loop diagram by hand, sketching the tolerance contribution vectors through the
-      assembly chain from datum to critical feature, then summed them arithmetically to determine
-      the clearance boundaries at worst case. This confirmed whether the hole would always clear
-      its mating part under the tightest possible combination of tolerances.
-    </p>
+    <p>Here are two hand-drawn worst-case loop analyses from the same suspension project:</p>
 
-    <div class="tol-img-wrap">
-      <img src="../assets/images/tolerance_stack.jpg" alt="Hand-drawn tolerance loop vectors and arithmetic stack calculation" />
+    <div class="tol-pair">
+      <div class="tol-pair-wrap">
+        <img src="../assets/images/tolerance_stack.jpeg" alt="Tolerance loop diagram 1" />
+      </div>
+      <div class="tol-pair-wrap">
+        <img src="../assets/images/tol_stack2.jpeg" alt="Tolerance loop diagram 2" />
+      </div>
     </div>
-    <p class="img-caption">Hand-drawn tolerance contribution vectors through the assembly chain. Arithmetic worst-case sum confirmed the clearance boundary for the hole feature in the prototype.</p>
+    <p class="img-caption">Hand-drawn tolerance loops with worst-case sums to check clearance on two different features.</p>
 
     <div class="page-divider"></div>
 
-    <!-- FEA -->
-    <h2>FEA Validation</h2>
+    <!-- FEA + DFM -->
+    <h2>FEA and DFM</h2>
     <p>
-      For any mechanism involving contact
-      forces, deflection, or structural loading, I ran <strong>ANSYS FEA static simulations</strong>
-      to verify the design met stiffness and strength requirements before cutting a physical
-      prototype.
+      No design change went out based on CAD alone. For anything with contact forces or deflection,
+      I ran <strong>ANSYS Static FEA</strong>. I compared FEA results to physical
+      test data or hand calculations. When they lined up, the model was good enough to trust for future iterations.
     </p>
     <p>
-      Running FEA and physical testing in parallel built a feedback loop that accelerated
-      confidence in the design. When simulation and test agreed, I knew the
-      model was accurate enough to rely on for future iterations without always needing
-      a physical part in hand first.
-    </p>
-
-    <div class="page-divider"></div>
-
-    <!-- MACHINIST -->
-    <div class="machinist-block">
-      <h3>Daily Time on the Shop Floor</h3>
-      <p>
-        This part of the internship shaped how I think about mechanical design more
-        than anything else. I was working together with the machinists, watching how my features got cut, and
-        learning what makes a design straightforward or painful to make.
-      </p>
-      <p>
-        Those conversations changed how I think about tolerances. A ±0.005" callout that looks
-        fine on a drawing might require a setup change, a specialty bit/tooling, or a slower feed rate
-        that adds cost. I got comfortable asking "can we open this up 0.002" without
-        affecting function?" and usually the answer was yes, which simplified the operation.
-      </p>
-      <p>
-        I walked <strong>every drawing through the machinists directly before releasing it</strong>,
-        going through datum structure, critical features, and how they planned to measure them.
-        That caught a lot of ambiguity that would have shown up as a non-conformance or a
-        scrapped part instead. The relationship I built with the shop team gave me a practical
-        understanding of DFM that I could not have gotten in school.
-      </p>
-    </div>
-
-    <!-- DFM / DFMEA -->
-    <h2>DFM and DFMEA for Mass Manufacturing</h2>
-    <p>
-      Getting a prototype to work is only half of it. The other half is making the design manufacturable at scale without the cost blowing up. I applied DFM principles throughout,
-      which meant:
-    </p>
-    <ul>
-      <li>Removing tight tolerances from non-critical features to reduce inspection burden</li>
-      <li>Standardizing hole sizes and thread specs to cut down on tool changeovers</li>
-      <li>Tuning wall thicknesses and radii for the target machining processes</li>
-    </ul>
-    <p>
-      I also used <strong>DFMEA</strong> to systematically identify potential failure modes
-      in each mechanism, assess severity and likelihood, and implement design changes that reduced
-      risk.
+      DFM was part of the whole process: loosening tolerances on features that didn't need to be tight, 
+      standardizing fastener specs to cut down on tool changes, and adjusting radii for the machining process we were using.
+      I walked every drawing through the machinists before releasing it. That caught most of the problems
+      before they turned into scrapped parts.
     </p>
 
     <div class="page-divider"></div>
 
     <!-- IMPACT -->
-    <h2>Overarching Impact</h2>
+    <h2>Impact</h2>
     <p>
-      The products I worked on support some of the fastest-growing segments in global
-      infrastructure, hyperscale AI compute, cloud data centers, and high-performance networking. Having my work feed into that pipeline, even as a contributor on a development team, is amazing!
+      The products I worked on go into hyperscale AI systems, cloud data centers, and high-performance
+      networking gear. Some of the development work I contributed to is being prepared for <strong>international marketing</strong>.
+      Working in that pipeline, even as a junior contributor, feels pretty great.
     </p>
 
   </div>
