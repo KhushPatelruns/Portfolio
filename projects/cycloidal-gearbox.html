@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Cycloidal Gearbox Housing | Khush Patel</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .section-divider { width:100%; height:1px; background:var(--border); margin:2.5rem 0 2rem; }
+    .callout-box { background:var(--accent-pale); border:1.5px solid var(--border-mid); border-left:4px solid var(--accent); border-radius:0 var(--radius) var(--radius) 0; padding:1rem 1.25rem; margin-bottom:1.5rem; max-width:700px; }
+    .callout-box p { margin-bottom:0 !important; color:var(--navy) !important; font-size:0.92rem !important; }
+    .img-pair { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1.5rem 0; }
+    .img-pair .project-img-wrap { margin-bottom:0; }
+    .eq-block { background:var(--bg-alt); border:1.5px solid var(--border); border-radius:var(--radius); padding:1rem 1.3rem; margin:1rem 0 1.25rem; max-width:520px; font-family:var(--mono); font-size:0.85rem; color:var(--navy); line-height:2; }
+    .eq-block .eq-label { font-size:0.6rem; color:var(--accent); letter-spacing:0.14em; text-transform:uppercase; font-weight:700; margin-bottom:0.3rem; }
+    .data-table-wrap { overflow-x:auto; margin:1.25rem 0 1.5rem; border-radius:var(--radius); border:1.5px solid var(--border); max-width:580px; }
+    .data-table { width:100%; border-collapse:collapse; font-size:0.86rem; background:var(--bg-card); }
+    .data-table thead tr { background:var(--accent); color:#fff; }
+    .data-table thead th { padding:0.55rem 0.9rem; font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; font-weight:700; text-align:left; text-transform:uppercase; }
+    .data-table tbody tr { border-bottom:1px solid var(--border); }
+    .data-table tbody tr:last-child { border-bottom:none; }
+    .data-table td { padding:0.55rem 0.9rem; color:var(--text-muted); }
+    .data-table td:first-child { color:var(--navy); font-weight:600; font-family:var(--mono); font-size:0.78rem; }
+    .result-badge { display:inline-flex; align-items:center; gap:0.5rem; background:rgba(16,185,129,0.08); border:1.5px solid rgba(16,185,129,0.25); border-radius:var(--radius); padding:0.75rem 1rem; margin:1rem 0; max-width:520px; }
+    .result-badge .rb-icon { font-size:1.1rem; }
+    .result-badge .rb-text { font-family:var(--mono); font-size:0.76rem; color:#065f46; line-height:1.5; }
+    .result-badge .rb-text strong { color:var(--green); font-weight:700; }
+    .takeaway-box { background:linear-gradient(135deg,var(--accent) 0%,var(--navy-mid) 100%); border-radius:var(--radius-lg); padding:1.5rem 1.8rem; max-width:700px; }
+    .takeaway-box h3 { font-family:var(--display); font-size:1rem; font-weight:700; color:#fff; margin-bottom:0.6rem; }
+    .takeaway-box ul { list-style:none !important; margin:0 !important; }
+    .takeaway-box ul li { padding-left:1.2rem !important; color:rgba(255,255,255,0.85) !important; font-size:0.88rem !important; line-height:1.7 !important; margin-bottom:0.4rem !important; }
+    .fea-compare { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; align-items:start; margin:1.5rem 0; }
+    .fea-compare .eq-block { margin:0; max-width:none; }
+    @media (max-width:700px) { .img-pair{grid-template-columns:1fr;} .fea-compare{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <nav class="navbar" id="navbar">
+    <a href="../index.html" class="nav-logo">KP <span>/ engineer</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#internships">Internships</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+      <li><a href="../resume.html" class="nav-resume-btn">Resume</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="../index.html#about" onclick="closeMobileNav()">About</a>
+    <a href="../index.html#internships" onclick="closeMobileNav()">Internships</a>
+    <a href="../index.html#projects" onclick="closeMobileNav()">Projects</a>
+    <a href="../index.html#contact" onclick="closeMobileNav()">Contact</a>
+    <a href="../resume.html">Resume</a>
+  </div>
+
+  <div class="page-hero">
+    <a href="../index.html#projects" class="page-back">Back to Projects</a>
+    <p class="section-eyebrow">JHU Mars Rover Team / Mechanical Design / FEA</p>
+    <h1 class="page-title">Cycloidal Gearbox Housing</h1>
+    <div class="page-tags">
+      <span class="tag">SolidWorks</span>
+      <span class="tag">FEA Simulation</span>
+      <span class="tag">Torque Analysis</span>
+      <span class="tag">DFM</span>
+      <span class="tag">CNC Machining</span>
+    </div>
+  </div>
+
+  <div class="page-content">
+
+    <div class="takeaway-box" style="margin-top:0;margin-bottom:2.5rem;">
+      <h3>Key Takeaways</h3>
+      <ul>
+        <li>Derived torque model across all 4 wrist motors, enabling 50% motor cost reduction</li>
+        <li>FEA-driven weight optimization: reduced housing mass by 20% while staying under deflection threshold</li>
+        <li>Hand calcs matched FEA within 10%, validating the simulation setup</li>
+        <li>7 kg payload capacity verified through analysis and physical testing</li>
+      </ul>
+    </div>
+
+    <div class="project-img-wrap">
+      <img src="cycloidal-gearbox/housing_cover.jpeg" alt="CAD model and machined cycloidal gearbox housing" />
+    </div>
+    <p class="img-caption">CAD model (left) and machined 7075-T6 aluminum housing (right)</p>
+
+    <div class="highlight-grid reveal">
+      <div class="highlight-card">
+        <div class="highlight-num">7 kg</div>
+        <div class="highlight-label">Payload capacity</div>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-num">20%</div>
+        <div class="highlight-label">Weight reduction</div>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-num">1.3x</div>
+        <div class="highlight-label">Safety factor</div>
+      </div>
+    </div>
+
+    <h2>Overview</h2>
+    <p>Part of the Johns Hopkins Mars Rover Team manipulator subteam. I designed the cycloidal gearbox housing for the wrist assembly, sized motors for a 7 kg payload, and optimized the housing for weight while maintaining stiffness. The approach: derive torque requirements analytically, use FEA to validate and push the design lighter, then verify with hand calcs before sending to the machine shop.</p>
+
+    <div class="section-divider"></div>
+
+    <h2>Torque Analysis</h2>
+
+    <p>The wrist has 4 motors, each seeing different torque depending on arm configuration. I derived the torque equations for each joint using statics, then found the worst-case loading at full extension with max payload.</p>
+
+    <div class="img-pair">
+      <div>
+        <div class="project-img-wrap">
+          <img src="cycloidal-gearbox/hand_calcs.png" alt="Hand calculations for torque requirements" />
+        </div>
+        <p class="img-caption">Torque derivation for motor sizing</p>
+      </div>
+      <div>
+        <div class="project-img-wrap">
+          <img src="cycloidal-gearbox/motor_setup.jpeg" alt="BLDC motor and driver board" />
+        </div>
+        <p class="img-caption">Selected BLDC motor with driver board</p>
+      </div>
+    </div>
+
+    <div class="callout-box">
+      <p>At the first motor, 7 kg payload at r = 0.025 m gives a base torque of 1.7 N·m. With 1.3x safety factor, minimum requirement is 2.2 N·m. I derived equivalent equations for all 4 motors using the same approach.</p>
+    </div>
+
+    <div class="eq-block">
+      <div class="eq-label">Motor Torque (Generalized)</div>
+      <div>τ<sub>L</sub> + τ<sub>m</sub> = Iα</div>
+      <div>τ<sub>motor</sub> = M(gr₃ + ⅙a₃²α)</div>
+      <div style="margin-top:0.5rem; font-size:0.8rem; color:var(--text-muted);">For 7 kg at r = 0.025 m: τ = 1.7 N·m</div>
+      <div style="font-size:0.8rem; color:var(--text-muted);">With 1.3x SF: τ<sub>req</sub> = 2.2 N·m</div>
+    </div>
+
+    <p>This analysis showed we could use smaller BLDCs than originally planned, cutting motor cost by about 50% while still meeting torque requirements with margin.</p>
+
+    <div class="section-divider"></div>
+
+    <h2>Housing Weight Optimization</h2>
+
+    <p>The baseline housing design was conservative. I used FEA to evaluate how much material could be removed while staying under the deflection threshold for gear alignment.</p>
+
+    <div class="callout-box">
+      <p>For cycloidal gearboxes, shaft deflection needs to stay under ~8 μm to maintain proper gear mesh. This became the target for the optimization.</p>
+    </div>
+
+    <div class="data-table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Component</th><th>Original</th><th>Optimized</th><th>Reduction</th></tr></thead>
+        <tbody>
+          <tr><td>Housing wall</td><td>6 mm</td><td>5 mm</td><td>17%</td></tr>
+          <tr><td>Shaft diameter</td><td>14 mm</td><td>12.7 mm</td><td>9%</td></tr>
+          <tr><td>Flange thickness</td><td>8 mm</td><td>6 mm</td><td>25%</td></tr>
+          <tr><td style="font-weight:700;">Total mass</td><td>253 g</td><td>210 g</td><td style="color:var(--green);font-weight:700;">17%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Combined with additional lightening pockets in non-critical areas, the final design hit the 20% weight reduction target. DFM principles were applied throughout: wall thicknesses stayed above CNC limits, tolerances were specified only where they mattered for gear alignment.</p>
+
+    <div class="section-divider"></div>
+
+    <h2>FEA Validation</h2>
+
+    <p>Ran a static study on the optimized shaft coupling under 70 N lateral load (worst-case from payload at full extension). The goal: confirm deflection stays under 8 μm threshold.</p>
+
+    <div class="fea-compare">
+      <div class="project-img-wrap" style="margin-bottom:0;">
+        <img src="cycloidal-gearbox/fea_displacement.png" alt="FEA displacement plot showing 6.5 micron max" />
+      </div>
+      <div class="eq-block">
+        <div class="eq-label">Hand Calc Check</div>
+        <div>d = 12.7 mm, L = 30.5 mm, F = 70 N</div>
+        <div>I = πd⁴/64 = 1.28 × 10⁻⁹ m⁴</div>
+        <div>δ = FL³/(3EI)</div>
+        <div>δ = (70)(0.0305)³ / (3 × 71.7×10⁹ × 1.28×10⁻⁹)</div>
+        <div style="margin-top:0.3rem;"><strong>δ<sub>hand</sub> = 7.2 μm</strong></div>
+        <div style="margin-top:0.8rem; padding-top:0.6rem; border-top:1px solid var(--border);">
+          <div class="eq-label">FEA Result</div>
+          <div><strong>δ<sub>FEA</sub> = 6.5 μm</strong></div>
+        </div>
+      </div>
+    </div>
+    <p class="img-caption">SolidWorks FEA displacement plot (7075-T6 Al, 70 N lateral load)</p>
+
+    <div class="data-table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Metric</th><th>Value</th><th>Threshold</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>FEA deflection</td><td>6.5 μm</td><td>< 8 μm</td><td style="color:var(--green);font-weight:600;">PASS</td></tr>
+          <tr><td>Hand calc</td><td>7.2 μm</td><td>< 8 μm</td><td style="color:var(--green);font-weight:600;">PASS</td></tr>
+          <tr><td>FEA vs hand calc</td><td>10% diff</td><td>< 15%</td><td style="color:var(--green);font-weight:600;">PASS</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Hand calc assumes a pure cantilever from a rigid wall, which slightly overestimates deflection. FEA captures the additional stiffness from the flange plate and using tetrahedral elements, which have increased stiffness due to triangular nature. The 10% agreement confirms the model is set up correctly and the optimized geometry is good to machine.</p>
+
+    <div class="result-badge">
+      <span class="rb-icon">✓</span>
+      <span class="rb-text"><strong>Design validated:</strong> 6.5 μm deflection is under 8 μm threshold. 20% lighter housing approved for CNC machining.</span>
+    </div>
+
+    <div class="takeaway-box" style="margin-top:2.5rem;">
+      <h3>Bottom Line</h3>
+      <ul>
+        <li>Torque analysis on all 4 motors enabled proper actuator sizing at 50% lower cost</li>
+        <li>FEA-driven optimization reduced housing weight 20% while meeting stiffness requirements</li>
+        <li>Hand calcs validated FEA results before committing to machining</li>
+        <li>7 kg payload capacity confirmed through analysis and experimental testing</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-left">2025 <span>Khush Patel</span> / Built with precision</div>
+    <div class="footer-right">
+      <a href="../index.html">Home</a>
+      <a href="../index.html#projects">All Projects</a>
+      <a href="../index.html#contact">Contact</a>
+    </div>
+  </footer>
+
+  <script src="../main.js"></script>
+</body>
+</html>
